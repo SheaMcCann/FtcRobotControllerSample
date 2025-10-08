@@ -14,18 +14,21 @@ public class ExampleTeleOp extends LinearOpMode{
 
     @Override
     public void runOpMode(){
-        // "exampleMotor" is the name I created above (public DcMotor exampleMotor;)
+        // "exampleMotor" is the name I created above (line 12 public DcMotor exampleMotor;)
         // whereas "EM" is the name established in my hardware configuration on the Driver Station.
         exampleMotor = hardwareMap.get(DcMotor.class, "EM");
         exampleServo = hardwareMap.get(Servo.class, "ES");
 
-        exampleMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE); // not necessary, forces the motor to stop more abruptly
+        exampleMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE); // not necessary, just forces the motor to stop more abruptly
 
+        //if you would like to reverse the direction of a motor use this:
+        //exampleMotor.setDirection(DcMotor.Direction.REVERSE);
+        
         waitForStart();
         while (opModeIsActive()){
             if (gamepad1.x){ // if button x is pressed, do this:
-                exampleMotor.setPower(1); // sets motor power to any number from -1 to 1
-                exampleServo.setPosition(1); // sets servo position to any number from -1 to 1
+                exampleMotor.setPower(1);
+                exampleServo.setPosition(1);
             }
             else if (gamepad1.y){ // if button y is pressed, do this:
                 exampleMotor.setPower(-0.5);
